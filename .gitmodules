@@ -1,0 +1,3 @@
+[submodule "baseKit"]
+	path = baseKit
+	url = https://github.com/momoxiaoming/baseKit.git
