@@ -1,3 +1,4 @@
+include ':baseKit:common'
 include ':app'
 include ':baseKit:ext'
 include ':baseKit:base'
