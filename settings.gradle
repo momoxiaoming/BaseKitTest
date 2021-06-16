@@ -3,3 +3,4 @@ include ':app'
 include ':baseKit:ext'
 include ':baseKit:base'
 rootProject.name = "BaseKitTest"
+

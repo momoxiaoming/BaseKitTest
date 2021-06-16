@@ -1,11 +1,14 @@
 package com.mc.cpyr.basekittest
 
+import android.util.Log
 import androidx.lifecycle.Lifecycle
 import com.kit.base.fragment.DataBindingFragment
 import com.kit.base.viewmodel.AbsViewModel
 import com.kit.base.viewmodel.BaseViewModel
 import com.mc.cpyr.basekittest.databinding.FragmentCounterBinding
 import com.mm.kit.common.time.Counter
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 /**
  * CounterFragment
@@ -26,6 +29,7 @@ class CounterFragment : DataBindingFragment<FragmentCounterBinding, BaseViewMode
 
     override fun initLayout() {
         mBinding.btn.setOnClickListener {
+
             Counter(this, Lifecycle.Event.ON_DESTROY, 10, 1).subscribe {
                 mBinding.text.text="$it"
             }.subscribeFinish {
