@@ -17,9 +17,12 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.kit.base.activity.DataBindingActivity
 import com.kit.base.viewmodel.BaseViewModel
 import com.mc.cpyr.basekittest.databinding.ActivityMainBinding
+import com.mc.cpyr.kit.ext.logI
 import com.mc.cpyr.kit.util.Debuger
+import com.mm.ext.IE
 import com.mm.ext.launch
 import com.mm.kit.common.color.ColorUtils
+import com.mm.kit.common.log.VLog
 import com.skt.lib.helper.startFragment
 import com.skt.lib.helper.startFullFragment
 import com.skt.lib.helper.startTitleFragment
@@ -42,7 +45,8 @@ class MainActivity : DataBindingActivity<ActivityMainBinding, BaseViewModel>() {
         mBinding.btn.setOnClickListener {
             startFragment("/app/CounterFragment")
 //            startTitleFragment("/app/CounterFragment")
-
+            val s = true.IE({ "111" }, { 1 })
+            logI { s }
         }
 
 

@@ -21,7 +21,7 @@
         </activity>
 
         <activity
-            android:name="com.skt.lib.ui.ContainerActivity"
+            android:name="com.skt.lib.ui.activity.ContainerActivity"
             android:theme="@style/App.BaseTheme" tools:replace="android:theme"/>
     </application>
 
