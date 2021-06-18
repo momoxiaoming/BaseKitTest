@@ -4,3 +4,6 @@ include ':baseKit:ext'
 include ':baseKit:base'
 rootProject.name = "BaseKitTest"
 
+apply from: 'skt/sktSettings.gradle'
+
+
