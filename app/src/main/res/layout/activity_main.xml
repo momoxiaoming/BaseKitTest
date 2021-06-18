@@ -19,6 +19,7 @@
             app:godSelBackgroundColor="@color/white"
             app:godNorBackgroundColor="@color/black"
             android:background="@color/teal_200"
+
             app:layout_constraintTop_toTopOf="parent" />
 
 
