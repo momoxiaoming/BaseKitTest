@@ -24,5 +24,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <com.skt.lib.ui.view.QueueTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:first_text="你好"
+            app:first_textColor="@color/teal_700"
+            app:first_textStyle="bold"
+            app:first_textSize="30sp"
+            app:second_text="不好"
+            app:end_text="好吗"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

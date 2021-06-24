@@ -7,6 +7,7 @@ import com.kit.base.viewmodel.BaseViewModel
 import com.mc.cpyr.basekittest.databinding.ActivityMainBinding
 import com.mc.cpyr.kit.ext.logI
 import com.mm.ext.IE
+import com.skt.lib.helper.startFragment
 import com.skt.lib.ui.view.GOrientation
 
 class MainActivity : DataBindingActivity<ActivityMainBinding, BaseViewModel>() {
@@ -20,7 +21,7 @@ class MainActivity : DataBindingActivity<ActivityMainBinding, BaseViewModel>() {
         super.initLayout()
 
         mBinding.cardView.setOnClickListener {
-//            startFragment("/app/CounterFragment")
+            startFragment("/app/listFragment")
 //            startTitleFragment("/app/CounterFragment")
             val s = true.IE({ "111" }, { 1 })
             logI { s }
