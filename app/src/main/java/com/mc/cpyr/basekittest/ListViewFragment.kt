@@ -5,8 +5,8 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.mc.cpyr.basekittest.databinding.FragmentListBinding
 import com.mc.cpyr.kit.ext.logI
 import com.skt.lib.ui.list.state.DefaultLoadingView
-import com.skt.lib.ui.adapter.LoadMoreListener
-import com.skt.lib.ui.adapter.RefreshListener
+import com.skt.lib.ui.list.LoadMoreListener
+import com.skt.lib.ui.list.RefreshListener
 import com.skt.lib.ui.fragment.LoadDataBindingFragment
 import com.skt.lib.ui.list.state.DefaultEmptyView
 import com.skt.lib.ui.list.state.DefaultErrorView
@@ -65,12 +65,12 @@ class ListViewFragment :LoadDataBindingFragment<FragmentListBinding, TestViewMod
             list.add("item->$i")
         }
         mBinding.stateRecycleView.initConfig(LinearLayoutManager(requireContext()),adapter,true)
-        mBinding.stateRecycleView.setOnRefreshListener(object :RefreshListener{
+        mBinding.stateRecycleView.setOnRefreshListener(object : RefreshListener {
             override fun onRefreshListener() {
                 refreshData(mBinding.stateRecycleView.page)
             }
         })
-        mBinding.stateRecycleView.setOnLoadMoreListener(object :LoadMoreListener{
+        mBinding.stateRecycleView.setOnLoadMoreListener(object : LoadMoreListener {
             override fun onLoadMoreListener() {
                 loadMoreData(mBinding.stateRecycleView.page)
             }
