@@ -1,14 +1,23 @@
 package com.mc.cpyr.basekittest
 
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import com.kit.base.activity.DataBindingActivity
 import com.kit.base.viewmodel.BaseViewModel
 import com.mc.cpyr.basekittest.databinding.ActivityMainBinding
 import com.mc.cpyr.kit.ext.logI
 import com.mm.ext.IE
+import com.mm.ext.launch
 import com.skt.lib.helper.startFragment
 import com.skt.lib.ui.view.GOrientation
+import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
+import java.util.concurrent.atomic.AtomicBoolean
+import kotlin.random.Random
 
 class MainActivity : DataBindingActivity<ActivityMainBinding, BaseViewModel>() {
 
@@ -19,13 +28,18 @@ class MainActivity : DataBindingActivity<ActivityMainBinding, BaseViewModel>() {
     @RequiresApi(Build.VERSION_CODES.M)
     override fun initLayout() {
         super.initLayout()
-
+        val data = MutableLiveData<String>()
+        data.value = "123"
         mBinding.cardView.setOnClickListener {
-            startFragment("/app/listFragment")
+//            startFragment("/app/listFragment")
 //            startTitleFragment("/app/CounterFragment")
             val s = true.IE({ "111" }, { 1 })
             logI { s }
+            data.value = "${Random.nextInt(0,10)}"
         }
+
+
+
 
 
 //        val view:GradientDrawable
@@ -52,7 +66,18 @@ class MainActivity : DataBindingActivity<ActivityMainBinding, BaseViewModel>() {
 
 
     }
-    fun test(@GOrientation int: Int){
+
+
+
+    private fun <T> Flow<T>.scopeCollect(block: (T) -> Unit) {
+        scope.launch {
+            this@scopeCollect.collect {
+                block.invoke(it)
+            }
+        }
+    }
+
+    fun test(@GOrientation int: Int) {
 
     }
 
