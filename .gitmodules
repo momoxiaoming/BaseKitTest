@@ -1,6 +1,6 @@
 [submodule "baseKit"]
 	path = baseKit
-	url = https://github.com/momoxiaoming/baseKit.git
+	url = git@github.com:momoxiaoming/baseKit.git
 [submodule "skt"]
 	path = skt
-	url = https://github.com/momoxiaoming/skt.git
+	url = git@github.com:momoxiaoming/skt.git
