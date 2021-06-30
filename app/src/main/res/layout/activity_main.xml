@@ -10,31 +10,10 @@
         tools:context=".MainActivity">
 
 
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cardView"
-            god_normal_gradient_startColor="@{@color/purple_200}"
-            god_pressed_solidColor="@{@color/purple_700}"
-            god_pressed_radius="@{10}"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_marginTop="140dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.skt.lib.ui.view.QueueTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:first_text="你好"
-            app:first_textColor="@color/teal_700"
-            app:first_textStyle="bold"
-            app:first_textSize="30sp"
-            app:second_text="不好"
-            app:end_text="好吗"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

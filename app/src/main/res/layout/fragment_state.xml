@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <Button
+                android:id="@+id/loadingBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="加载中" />
+
+            <Button
+                android:id="@+id/emptyBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="空视图" />
+
+            <Button
+                android:id="@+id/errorBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="错误视图" />
+
+            <Button
+                android:id="@+id/defaultBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="正常视图" />
+        </LinearLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/targetLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/dk_un_press_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

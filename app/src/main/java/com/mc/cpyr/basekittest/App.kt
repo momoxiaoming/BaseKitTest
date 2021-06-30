@@ -1,8 +1,11 @@
 package com.mc.cpyr.basekittest
 
 import android.app.Application
+import com.didichuxing.doraemonkit.extension.err
 import com.kit.base.app.BaseAppDelegate
 import com.kit.base.app.BaseApplication
+import com.kit.base.view.state.StateConfig
+import com.kit.base.view.state.setText
 import com.mc.cpyr.kit.app.DefaultAppDelegate
 
 /**
@@ -25,5 +28,6 @@ class App : BaseApplication() {
                 .productId("需要使用平台功能的话，需要到dokit.cn平台申请id")
                 .build()
 
+        StateConfig.default()
     }
 }

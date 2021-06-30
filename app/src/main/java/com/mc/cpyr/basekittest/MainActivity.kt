@@ -1,96 +1,66 @@
 package com.mc.cpyr.basekittest
 
-import android.os.Build
 import android.util.Log
-import androidx.annotation.RequiresApi
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
+import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.drakeet.multitype.MultiTypeAdapter
 import com.kit.base.activity.DataBindingActivity
+import com.kit.base.adapter.holder.AbsViewHolder
+import com.kit.base.adapter.binder.CommonViewBinder
 import com.kit.base.viewmodel.BaseViewModel
 import com.mc.cpyr.basekittest.databinding.ActivityMainBinding
 import com.mc.cpyr.kit.ext.logI
-import com.mm.ext.IE
-import com.mm.ext.launch
+import com.mm.ext.DividerDrawable
+import com.mm.ext.dividerLine
 import com.skt.lib.helper.startFragment
-import com.skt.lib.ui.view.GOrientation
-import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.launch
-import java.util.concurrent.atomic.AtomicBoolean
-import kotlin.random.Random
 
 class MainActivity : DataBindingActivity<ActivityMainBinding, BaseViewModel>() {
+
+
+    private val adapter by lazy {
+        val adapter=MultiTypeAdapter()
+        adapter.register(BizBean::class.java,object : CommonViewBinder<BizBean>(R.layout.item_list_view){
+            override fun onCreateHolder(itemView: View): AbsViewHolder<BizBean> {
+                return TestCommonViewHolder(itemView)
+            }
+        }.apply {
+            setOnItemClickListener{ adapter: MultiTypeAdapter, view: View, i: Int ->
+               val item= adapter.items[i] as BizBean
+                item.runnable?.run()
+            }
+        })
+
+        adapter
+    }
 
     override fun getLayoutId(): Int {
         return R.layout.activity_main
     }
-
-    @RequiresApi(Build.VERSION_CODES.M)
-    override fun initLayout() {
-        super.initLayout()
-        val data = MutableLiveData<String>()
-        data.value = "123"
-        mBinding.cardView.setOnClickListener {
-//            startFragment("/app/listFragment")
-//            startTitleFragment("/app/CounterFragment")
-            val s = true.IE({ "111" }, { 1 })
-            logI { s }
-            data.value = "${Random.nextInt(0,10)}"
-        }
-
-
-
-
-
-//        val view:GradientDrawable
-//        view.cornerRadii= floatArrayOf(1f,1f)
-
-        test(-1)
-
-//        val drawable= DelegateDrawable()
-//        val norDrawable= ColorDrawable()
-//        norDrawable.color = getColor(R.color.purple_700)
-//        val pressDrawable=ColorDrawable()
-//        pressDrawable.color = getColor(R.color.purple_200)
-//
-//        val pressDrawable2=ColorDrawable()
-//        pressDrawable2.color = getColor(R.color.teal_200)
-//
-////        drawable.addState(intArrayOf(-android.R.attr.state_pressed),norDrawable)
-////        drawable.addState(intArrayOf(android.R.attr.state_pressed),pressDrawable)
-//        drawable.addState(intArrayOf(android.R.attr.state_enabled),pressDrawable)
-//
-//        drawable.addState(intArrayOf(0),norDrawable)
-//        mBinding.cardView.backgroundDrawable=drawable
-//        mBinding.cardView.isEnabled=false
-
-
-    }
-
-
-
-    private fun <T> Flow<T>.scopeCollect(block: (T) -> Unit) {
-        scope.launch {
-            this@scopeCollect.collect {
-                block.invoke(it)
-            }
-        }
-    }
-
-    fun test(@GOrientation int: Int) {
-
-    }
-
     override fun getViewModel(): BaseViewModel {
         return BaseViewModel()
     }
 
     override fun initView() {
 
+        mBinding.recyView.layoutManager=LinearLayoutManager(this)
+        mBinding.recyView.adapter=adapter
+        mBinding.recyView.dividerLine{
+            DividerDrawable(1).also { d ->
+                d.color = 0xffC8C8C8.toInt()
+            }
+        }
     }
 
     override fun initViewData() {
-
+        val list= mutableListOf<BizBean>()
+        list.add(BizBean("缺省页") {
+            startFragment("/app/StateFragment")
+        })
+        list.add(BizBean("定时器") {
+            startFragment("/app/CounterFragment")
+        })
+        adapter.items=list
+        adapter.notifyDataSetChanged()
     }
 
 }
